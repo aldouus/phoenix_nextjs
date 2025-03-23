@@ -1,0 +1,27 @@
+# app artifacts
+/_build
+/priv/static/
+/db
+/deps
+/*.ez
+/.elixir_ls
+
+# generated on crash by the vm
+erl_crash.dump
+
+/config/*.secret.exs
+
+/app/node_modules/
+/app/.next
+
+# environment variables
+.env*
+!.env.example
+
+# macos file system stuff
+.DS_Store
+
+# editor specific files
+.idea/
+.vscode/
+.zed
