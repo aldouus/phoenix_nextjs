@@ -1,5 +1,5 @@
 import Config
-import PhoenixNextjs.ConfigHelper, only: [get_env: 1]
+alias PhoenixNextjs.ConfigHelper
 
 # Configure your database
 #
@@ -7,9 +7,9 @@ import PhoenixNextjs.ConfigHelper, only: [get_env: 1]
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :phoenix_nextjs, PhoenixNextjs.Repo,
-  username: get_env("TEST_DB_USERNAME"),
-  password: get_env("TEST_DB_PASSWORD"),
-  hostname: get_env("TEST_DB_HOSTNAME"),
+  username: ConfigHelper.get_env("TEST_DB_USERNAME"),
+  password: ConfigHelper.get_env("TEST_DB_PASSWORD"),
+  hostname: ConfigHelper.get_env("TEST_DB_HOSTNAME"),
   database: "phoenix_nextjs_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
@@ -18,7 +18,7 @@ config :phoenix_nextjs, PhoenixNextjs.Repo,
 # you can enable the server option below.
 config :phoenix_nextjs, PhoenixNextjsWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: get_env("TEST_SECRET_KEY_BASE"),
+  secret_key_base: ConfigHelper.get_env("TEST_SECRET_KEY_BASE"),
   server: false
 
 # In test we don't send emails

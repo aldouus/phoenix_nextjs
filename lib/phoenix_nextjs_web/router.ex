@@ -37,4 +37,3 @@ defmodule PhoenixNextjsWeb.Router do
     get "/*path", PageController, :index
   end
 end
-

@@ -4,8 +4,6 @@
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
 
-Code.require_file("config/config_helper.ex")
-
 # General application configuration
 import Config
 

@@ -9,6 +9,12 @@ defmodule PhoenixNextjs.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      releases: [
+        phoenix_nextjs: [
+          include_executables_for: [:unix],
+          steps: [:assemble, :tar]
+        ]
+      ],
       deps: deps()
     ]
   end
@@ -33,6 +39,7 @@ defmodule PhoenixNextjs.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.20"},
+      {:rename_project, "~> 0.1.0", only: :dev},
       {:dotenvy, "~> 1.1.0"},
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},

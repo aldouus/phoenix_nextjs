@@ -1,5 +1,5 @@
 import Config
-import PhoenixNextjs.ConfigHelper, only: [get_env: 1]
+alias PhoenixNextjs.ConfigHelper
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
@@ -22,14 +22,14 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
-  database_url = get_env("DATABASE_URL")
+  database_url = ConfigHelper.get_env("DATABASE_URL")
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
   config :phoenix_nextjs, PhoenixNextjs.Repo,
     # ssl: true,
     url: database_url,
-    pool_size: String.to_integer(get_env("DB_POOL_SIZE")),
+    pool_size: String.to_integer(ConfigHelper.get_env("DB_POOL_SIZE")),
     socket_options: maybe_ipv6
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
@@ -37,10 +37,10 @@ if config_env() == :prod do
   # want to use a different value for prod and you most likely don't want
   # to check this value into version control, so we use an environment
   # variable instead.
-  secret_key_base = get_env("SECRET_KEY_BASE")
+  secret_key_base = ConfigHelper.get_env("SECRET_KEY_BASE")
 
-  host = get_env("PHX_HOST") || "localhost"
-  port = String.to_integer(get_env("PHX_PORT") || "4000")
+  host = ConfigHelper.get_env("PHX_HOST") || "localhost"
+  port = String.to_integer(ConfigHelper.get_env("PHX_PORT") || "4000")
 
   config :phoenix_nextjs, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 

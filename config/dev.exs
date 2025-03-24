@@ -1,15 +1,15 @@
 import Config
-import PhoenixNextjs.ConfigHelper, only: [get_env: 1]
+alias PhoenixNextjs.ConfigHelper
 
 # Configure your database
 config :phoenix_nextjs, PhoenixNextjs.Repo,
-  username: get_env("DB_USERNAME"),
-  password: get_env("DB_PASSWORD"),
-  hostname: get_env("DB_HOSTNAME"),
-  database: get_env("DB_NAME"),
+  username: ConfigHelper.get_env("DB_USERNAME"),
+  password: ConfigHelper.get_env("DB_PASSWORD"),
+  hostname: ConfigHelper.get_env("DB_HOSTNAME"),
+  database: ConfigHelper.get_env("DB_NAME"),
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
-  pool_size: String.to_integer(get_env("DB_POOL_SIZE"))
+  pool_size: String.to_integer(ConfigHelper.get_env("DB_POOL_SIZE"))
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -20,11 +20,11 @@ config :phoenix_nextjs, PhoenixNextjs.Repo,
 # Binding to loopback ipv4 address prevents access from other machines.
 config :phoenix_nextjs, PhoenixNextjsWeb.Endpoint,
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: String.to_integer(get_env("PHX_PORT"))],
+  http: [ip: {127, 0, 0, 1}, port: String.to_integer(ConfigHelper.get_env("PHX_PORT"))],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: get_env("SECRET_KEY_BASE"),
+  secret_key_base: ConfigHelper.get_env("SECRET_KEY_BASE"),
   watchers: [
     sh: ["-c", "cd app && pnpm dev"]
   ]

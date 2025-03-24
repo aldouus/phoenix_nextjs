@@ -1,12 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	output: "export",
+  output: "export",
+  distDir: "out",
+  trailingSlash: true,
 };
 
 // shut down the server when phx.server is shut down
 process.stdin.on("close", () => {
-	process.exit(0);
+  process.exit(0);
 });
 process.stdin.resume();
 
