@@ -39,6 +39,7 @@ defmodule PhoenixNextjs.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.20"},
+      {:cors_plug, "~> 3.0.3"},
       {:rename_project, "~> 0.1.0", only: :dev},
       {:dotenvy, "~> 1.1.0"},
       {:phoenix_ecto, "~> 4.5"},
