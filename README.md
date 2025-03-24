@@ -68,6 +68,15 @@ MIX_ENV=prod PHX_SERVER=true mix phx.server
 
 In production, only the Phoenix server will run, serving both the API and the static assets on the same port (default: 4000).
 
+## Using Docker for Production
+You can also use Docker to build and run the application in production:
+
+```bash
+docker compose up --build
+```
+
+This will build and start all necessary containers for the application to run in production mode.
+
 ## Environment Variables
 
 Create a `.env` file based on the `.env.example`
