@@ -15,11 +15,12 @@ services:
       timeout: 5s
       retries: 5
 
-  git_hosting:
+  phoenix_nextjs:
     build:
       context: .
       args:
         - SIGNING_SALT=${SIGNING_SALT}
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
     ports:
       - "4000:4000"
     env_file:

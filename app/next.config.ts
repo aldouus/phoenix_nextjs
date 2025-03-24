@@ -1,4 +1,10 @@
 import type { NextConfig } from "next";
+import { loadEnvConfig } from "@next/env";
+import path from "node:path";
+
+// load .env from the root directory
+const projectDir = path.resolve(process.cwd(), "..");
+loadEnvConfig(projectDir);
 
 const nextConfig: NextConfig = {
   output: "export",
